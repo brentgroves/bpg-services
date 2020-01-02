@@ -46,6 +46,8 @@
     "knex": "^0.20.4",
     "mqtt": "^3.0.0",
     "mssql": "^6.0.1",
+    "mysql": "^2.17.1",
+    "node-datetime": "^2.1.2",
     "objection": "^1.6.11",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"

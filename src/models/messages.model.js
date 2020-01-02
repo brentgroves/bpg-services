@@ -1,6 +1,7 @@
 // See https://vincit.github.io/objection.js/#models
 // for more of what you can do here.
 const { Model } = require('objection');
+var datetime = require('node-datetime');
 
 class messages extends Model {
 
@@ -21,11 +22,20 @@ class messages extends Model {
   }
 
   $beforeInsert() {
-    this.createdAt = this.updatedAt = new Date().toISOString();
+//    this.createdAt = this.updatedAt = new Date().toISOString(); //mssql?
+       var dt = datetime.create();
+        var createdAt = dt.format('Y-m-d H:M:S');  
+       this.createdAt = this.updatedAt = createdAt; 
+
   }
 
   $beforeUpdate() {
-    this.updatedAt = new Date().toISOString();
+//    this.updatedAt = new Date().toISOString();
+//    this.updatedAt = new Date().toISOString();
+       var dt = datetime.create();
+        var updatedAt = dt.format('Y-m-d H:M:S');  
+    this.updatedAt = updatedAt;
+
   }
 }
 
