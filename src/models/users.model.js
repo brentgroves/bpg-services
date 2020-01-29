@@ -19,6 +19,8 @@ class users extends Model {
         email: { type: ['string', 'null'] },
         password: 'string',
         userName: 'string',
+        firstName: 'string',
+        lastName: 'string',
         isAdmin: 'boolean',
         roles: {
           type: 'array',
@@ -33,15 +35,15 @@ class users extends Model {
 //    this.createdAt = this.updatedAt = new Date().toISOString();
 //    this.createdAt = this.updatedAt = new Date().toISOString();
        var dt = datetime.create();
-        var createdAt = dt.format('Y-m-d H:M:S');  
-       this.createdAt = this.updatedAt = createdAt; 
+        var createdAt = dt.format('Y-m-d H:M:S');
+       this.createdAt = this.updatedAt = createdAt;
 
   }
 
   $beforeUpdate() {
 //    this.updatedAt = new Date().toISOString();
        var dt = datetime.create();
-        var updatedAt = dt.format('Y-m-d H:M:S');  
+        var updatedAt = dt.format('Y-m-d H:M:S');
     this.updatedAt = updatedAt;
   }
 }
@@ -68,9 +70,11 @@ module.exports = function (app) {
         table.string('email').unique();
         table.string('password');
         table.string('userName');
+        table.string('firstName');
+        table.string('lastName');
         table.boolean('isAdmin');
-        //table.string('roles');
-        table.json('roles');
+        //table.string('roles');  mssql
+        table.json('roles'); // mysql
         table.timestamp('createdAt');
         table.timestamp('updatedAt');
       })
