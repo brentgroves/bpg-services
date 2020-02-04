@@ -20,11 +20,22 @@ server.on('listening', () =>
 
 // For good measure let's create a message
 // So our API doesn't look so empty
+app.service('test').create({
+  text: 'Hello world from the server',
+});
+app.service('mstest').create({
+  text: 'Hello world from the server',
+});
+/*
 app.service('Kep13318').create({
   text: 'Hello world from the server',
 });
-
-
+*/
+/*
+app.service('oeehourly').create({
+  text: 'Hello world from the server',
+});
+*/
 let mqttClient = mqtt.connect(config.MQTT);
 
 mqttClient.on('connect', function() {
