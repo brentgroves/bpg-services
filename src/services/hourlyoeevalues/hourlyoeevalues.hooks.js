@@ -1,5 +1,5 @@
 const mssqlFetch = require('../../hooks/mssql-fetch');
-//TESTING_ONLY
+
 module.exports = {
   before: {
     all: [],
@@ -31,4 +31,3 @@ module.exports = {
     remove: []
   }
 };
-//    all: [populateUser()],

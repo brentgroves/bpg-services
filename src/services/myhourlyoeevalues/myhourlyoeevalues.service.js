@@ -2,7 +2,7 @@
 const { Myhourlyoeevalues } = require('./myhourlyoeevalues.class');
 const createModel = require('../../models/myhourlyoeevalues.model');
 const hooks = require('./myhourlyoeevalues.hooks');
-
+//TESTING_ONLY
 module.exports = function (app) {
   const options = {
     Model: createModel(app),

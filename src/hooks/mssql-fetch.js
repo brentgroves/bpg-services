@@ -14,7 +14,10 @@ module.exports = function (options = {}) {
 
     context.params.query = {
       $sort: {
-        id:1
+        id:1  // Don't know if this can be overridden with explicit param in find()
+        // This is needed for HTTP request that does not include a sort option.
+        //https://github.com/feathersjs-ecosystem/feathers-sequelize#working-with-mssql
+        // Probably don't need this as long as we include a sort option in find()
       },
       ...query
     }

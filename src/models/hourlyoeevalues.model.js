@@ -1,12 +1,12 @@
-var datetime = require("node-datetime");
 // See https://vincit.github.io/objection.js/#models
 // for more of what you can do here.
-const { Model } = require("objection");
+const { Model } = require('objection');
+var datetime = require("node-datetime");
 
-class myhourlyoeevalues extends Model {
+class hourlyoeevalues extends Model {
 
   static get tableName() {
-    return "myhourlyoeevalues";
+    return 'hourlyoeevalues';
   }
 
   // Each model must have a column (or a set of columns) that uniquely
@@ -55,7 +55,7 @@ class myhourlyoeevalues extends Model {
         Job_number: { type: "string", minLength: 1, maxLength: 20 },
         Part_number: { type: "string", minLength: 1, maxLength: 60 },
         Data_hour: { type: "integer",minimum:1,maximum:24 },
-        Hourly_planned_production: { type: "integer",minimum:0,maximum:500 },
+        Hourly_planned_production_count: { type: "integer",minimum:0,maximum:500 },
         Hourly_actual_production_count: { type: "integer",minimum:0,maximum:500 },
         Cumulative_planned_production_count: { type: "integer",minimum:0,maximum:5000 },
         Cumulative_actual_production_count: { type: "integer",minimum:0,maximum:5000 },
@@ -106,11 +106,11 @@ address: {
 module.exports = function(app) {
   const db = app.get("knex");
   db.schema
-    .hasTable("myhourlyoeevalues")
+    .hasTable("hourlyoeevalues")
     .then(exists => {
       if (!exists) {
         db.schema
-          .createTable("myhourlyoeevalues", table => {
+          .createTable("hourlyoeevalues", table => {
             table.increments("ID");
             table.string("Workcenter_Code",50);
             table.string("Job_number",20);
@@ -124,12 +124,12 @@ module.exports = function(app) {
             table.float("Downtime_minutes"); // unsure about mssql mantissa and ordinate and how they map to precision and scale.
             table.datetime("Date_time_stamp");
           })
-          .then(() => console.log("Created myhourlyoeevalues table")) // eslint-disable-line no-console
+          .then(() => console.log("Created hourlyoeevalues table")) // eslint-disable-line no-console
           .catch(e =>
-            console.error("Error creating myhourlyoeevalues table", e)
+            console.error("Error creating hourlyoeevalues table", e)
           ); // eslint-disable-line no-console
       }
     })
-    .catch(e => console.error("Error creating myhourlyoeevalues table", e)); // eslint-disable-line no-console
-  return myhourlyoeevalues;
+    .catch(e => console.error("Error creating hourlyoeevalues table", e)); // eslint-disable-line no-console
+  return hourlyoeevalues;
 };

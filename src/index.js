@@ -26,6 +26,41 @@ app.service('test').create({
 app.service('mstest').create({
   text: 'Hello world from the server',
 });
+// TEST ONLY SECTION
+/*
+  app.service('users')
+    .create({
+      "email": "bgroves@buschegroup.com",
+      "password": "JesusLives1!",
+      "userName": "bgroves",
+      "firstName": "Brent",
+      "lastName": "Groves",
+      "isAdmin": true,
+      "roles": [ "Admin", "Manager", "Quality"]
+
+
+    }).then(async (res) => {
+        console.log('created user!')
+    }).catch(e => {
+      console.error('Authentication error', e);
+    });
+*/
+/*
+app.service('hourlyoeevalues').find({
+  query: {
+    $limit: 10,
+    $sort: {
+      ID: 1
+    }
+  }
+}).then((res) => {
+console.log('In Find')
+console.log(res.data[0])
+}).catch(e => {
+  // Show login page (potentially with `e.message`)
+  console.error('find error', e);
+});
+*/
 /*
 app.service('Kep13318').create({
   text: 'Hello world from the server',
