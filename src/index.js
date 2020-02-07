@@ -4,7 +4,6 @@ const app = require('./app');
 
 const mqtt = require('mqtt');
 const config = require('../../Config13318/config.json');
-
 const hostname = app.get('host');
 //const port = app.get('port');
 const port = config.BPGServicesPort;
@@ -73,6 +72,7 @@ app.service('oeehourly').create({
 */
 let mqttClient = mqtt.connect(config.MQTT);
 
+
 mqttClient.on('connect', function() {
   mqttClient.subscribe('Kep13318', function(err) {
     if (!err) {
@@ -99,6 +99,7 @@ mqttClient.on('message', function(topic, message) {
       text: msg,
     });
   }
+
   /*
   if('Sproc13318'==topic){
     console.log(`Sproc13318 message => ${message}`)
