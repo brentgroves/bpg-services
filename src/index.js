@@ -19,12 +19,14 @@ server.on('listening', () =>
 
 // For good measure let's create a message
 // So our API doesn't look so empty
+/*
 app.service('test').create({
   text: 'Hello world from the server',
 });
 app.service('mstest').create({
   text: 'Hello world from the server',
 });
+*/
 // TEST ONLY SECTION
 /*
   app.service('users')
