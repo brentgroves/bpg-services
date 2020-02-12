@@ -34,15 +34,15 @@ exports.Sproc200206 = class Sproc200206 {
   async create (data, params) {
     var result;
     console.log("in Sproc200206.create()");
-    const startDate ="2019-12-15T09:00:00";
-    const endDate ="2019-12-15T09:00:00";
+    const startDate ="2020-02-09T00:00:00";
+    const endDate ="2020-02-10T23:59:59";
     console.log(`tableName: ${data.tableName}, startDate: ${data.startDate}, endDate: ${data.endDate}`);
     try {
       let pool = await sql.connect(config.mssql)
       // query database
       const resultSet = await pool.request()
-        .input("start_date", sql.DateTime, startDate)
-        .input("end_date", sql.DateTime, endDate)
+        .input("start_date", sql.DateTime, data.startDate)
+        .input("end_date", sql.DateTime, data.endDate)
         .input("table_name", sql.VarChar(12), data.tableName)
         .output("record_count",sql.Int)
         .execute('Sproc200206');
@@ -51,7 +51,7 @@ exports.Sproc200206 = class Sproc200206 {
     } catch (e) {
       console.log('caught exception!', e);
     }
-    console.log(result);
+    //console.log(result);
     return result.output.record_count;
   }
 
