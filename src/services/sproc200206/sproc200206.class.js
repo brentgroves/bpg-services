@@ -17,7 +17,7 @@ exports.Sproc200206 = class Sproc200206 {
       console.log(params.query.$tableName)
 
       let resultSet = await pool.request()
-          .query(`select * from ${$tableName} ORDER BY id OFFSET ${$skip} ROWS FETCH NEXT ${$limit} ROWS ONLY`)
+          .query(`select * from ${$tableName} ORDER BY primary_key OFFSET ${$skip} ROWS FETCH NEXT ${$limit} ROWS ONLY`)
       console.dir(resultSet)
       return resultSet.recordset;
     } catch (e) {
