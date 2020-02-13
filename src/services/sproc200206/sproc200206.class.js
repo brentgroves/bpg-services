@@ -12,7 +12,14 @@ exports.Sproc200206 = class Sproc200206 {
     const {$tableName,$limit,$skip} = params.query;
     console.log(params)
     try {
-      let pool = await sql.connect(config.mssql)
+      let pool = await sql.connect({
+        "user" : "sa",
+        "password" : "S@Tsql@dmin1",
+        "database" : "Kors",
+        "server": "10.30.1.17"
+      })
+
+
       // query database
       console.log(params.query.$tableName)
 
@@ -38,7 +45,14 @@ exports.Sproc200206 = class Sproc200206 {
     const endDate ="2020-02-10T23:59:59";
     console.log(`tableName: ${data.tableName}, startDate: ${data.startDate}, endDate: ${data.endDate}`);
     try {
-      let pool = await sql.connect(config.mssql)
+      // have problems with knex and this working at same time on linux
+//      let pool = await sql.connect(config.mssql)
+      let pool = await sql.connect({
+        "user" : "sa",
+        "password" : "S@Tsql@dmin1",
+        "database" : "Kors",
+        "server": "10.30.1.17"
+      })
       // query database
       const resultSet = await pool.request()
         .input("start_date", sql.DateTime, data.startDate)
